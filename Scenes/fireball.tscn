@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqp3tglre6rkb"]
+
+[ext_resource type="Script" uid="uid://dephphvxdf16u" path="res://Scenes/fireball.gd" id="1_0mxqg"]
+[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/mario-luigi-4 (1) (1).png" id="2_ne4qj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olwj8"]
+radius = 5.0
+
+[node name="fireball" type="CharacterBody2D"]
+script = ExtResource("1_0mxqg")
+SPEED = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_olwj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ne4qj")
+region_enabled = true
+region_rect = Rect2(245, 305, 8, 9)

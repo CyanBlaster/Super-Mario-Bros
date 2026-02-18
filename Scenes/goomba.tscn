@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://c850hfh3e1qnj"]
+
+[ext_resource type="Script" uid="uid://d4geer1nlnkw7" path="res://Scripts/goomba.gd" id="1_jke6y"]
+[ext_resource type="Texture2D" uid="uid://b1or8bxesivwx" path="res://Sprites/enemies.png" id="2_lwfim"]
+[ext_resource type="Script" uid="uid://dl0xxsvvxg4up" path="res://Scripts/goomba_animator.gd" id="2_yj1s3"]
+
+[sub_resource type="Animation" id="Animation_lwfim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_yj1s3"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(60, 4, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_jke6y"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(0, 4, 16, 16), Rect2(30, 4, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj1s3"]
+_data = {
+&"RESET": SubResource("Animation_lwfim"),
+&"death": SubResource("Animation_yj1s3"),
+&"walk": SubResource("Animation_jke6y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yj1s3"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_508bv"]
+size = Vector2(18, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qp31q"]
+size = Vector2(16, 7.5)
+
+[node name="Goomba" type="CharacterBody2D"]
+script = ExtResource("1_jke6y")
+speed = 5000.0
+
+[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("PlayerDetector", "goomba", "animation_player")]
+script = ExtResource("2_yj1s3")
+PlayerDetector = NodePath("../PlayerDetector")
+goomba = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_yj1s3")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="Animator"]
+texture = ExtResource("2_lwfim")
+region_enabled = true
+region_rect = Rect2(0, 4, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yj1s3")
+
+[node name="WallDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_508bv")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(0, -4.75)
+shape = SubResource("RectangleShape2D_qp31q")
+
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
