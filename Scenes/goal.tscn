@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7aoxtcj1up8n"]
+
+[ext_resource type="Texture2D" uid="uid://ciw2ont5h1hdj" path="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. 3 - Enemies & Bosses - Enemies (1).png" id="1_paeek"]
+[ext_resource type="Script" uid="uid://b74j0reg4t0nw" path="res://Scenes/goal.gd" id="1_s0pnd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s0pnd"]
+radius = 7.071068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2lgk0"]
+radius = 9.0
+
+[node name="Goal" type="CharacterBody2D"]
+script = ExtResource("1_s0pnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s0pnd")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_paeek")
+region_enabled = true
+region_rect = Rect2(608, 480, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2lgk0")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -11,9 +11,8 @@ config_version=5
 [application]
 
 config/name="Super Mario"
-run/main_scene="res://Scenes/Levels/world_1_1.tscn"
+run/main_scene="uid://cu6o8my11j431"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 

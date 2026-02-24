@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://6hx2s6u80b3f"]
+[gd_scene load_steps=20 format=3 uid="uid://6hx2s6u80b3f"]
 
-[ext_resource type="Script" uid="uid://deg7k6sujcdqf" path="res://Scripts/mario.gd" id="1_pmqej"]
+[ext_resource type="Script" uid="uid://g7xysheaalgw" path="res://Scripts/mario.gd" id="1_5ue2y"]
 [ext_resource type="Script" uid="uid://coi5585ix30c1" path="res://Scripts/player_animator.gd" id="2_5ue2y"]
+[ext_resource type="Script" uid="uid://bvafwoi56ww6o" path="res://Scenes/camera_2d.gd" id="2_6je0m"]
+[ext_resource type="Script" uid="uid://ropac0kcyxrf" path="res://Scenes/label.gd" id="2_wnnry"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_20q7u"]
 radius = 7.0
@@ -59,6 +61,81 @@ tracks/0/keys = {
 "values": [Rect2(73, 90, 16, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_8wnhh"]
+resource_name = "fire_fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(73, 260, 16, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_mmods"]
+resource_name = "fire_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 262, 16, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_wih1i"]
+resource_name = "fire_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(73, 260, 16, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_glbki"]
+resource_name = "fire_throw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(208, 296, 16, 32), Rect2(226, 296, 16, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_0ic7m"]
+resource_name = "fire_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(20, 262, 16, 32), Rect2(37, 262, 16, 32), Rect2(20, 262, 16, 32), Rect2(0, 262, 16, 32)]
+}
+
 [sub_resource type="Animation" id="Animation_wnnry"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -89,8 +166,8 @@ tracks/0/keys = {
 "values": [Rect2(73, 90, 16, 32)]
 }
 
-[sub_resource type="Animation" id="Animation_mmods"]
-resource_name = "fire_idle"
+[sub_resource type="Animation" id="Animation_fhuoa"]
+resource_name = "tanooki_idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -101,67 +178,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(0, 262, 16, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_0ic7m"]
-resource_name = "fire_walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Rect2(20, 262, 16, 32), Rect2(37, 262, 16, 32), Rect2(20, 262, 16, 32), Rect2(0, 262, 16, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_wih1i"]
-resource_name = "fire_jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(73, 260, 16, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_8wnhh"]
-resource_name = "fire_fall"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(73, 260, 16, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_glbki"]
-resource_name = "fire_throw"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Rect2(208, 296, 16, 32), Rect2(226, 296, 16, 32)]
+"values": [Rect2(1, 570, 22, 32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnnry"]
@@ -175,26 +192,28 @@ _data = {
 &"fire_throw": SubResource("Animation_glbki"),
 &"fire_walk": SubResource("Animation_0ic7m"),
 &"idle": SubResource("Animation_wnnry"),
-&"jump": SubResource("Animation_6je0m")
+&"jump": SubResource("Animation_6je0m"),
+&"tanooki_idle": SubResource("Animation_fhuoa")
 }
 
 [node name="Mario" type="CharacterBody2D"]
-script = ExtResource("1_pmqej")
+script = ExtResource("1_5ue2y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_20q7u")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="camera" type="Camera2D" parent="."]
 offset = Vector2(0, -30)
 zoom = Vector2(3, 3)
+script = ExtResource("2_6je0m")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -185.0
 offset_top = -126.0
-offset_right = -129.0
-offset_bottom = -103.0
-text = "Coins:0"
+offset_right = 142.0
+offset_bottom = -77.0
+script = ExtResource("2_wnnry")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -211,6 +230,7 @@ sprite = NodePath("Sprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
 position = Vector2(0, -14)
 texture = SubResource("CompressedTexture2D_pmqej")
+flip_h = true
 region_enabled = true
 region_rect = Rect2(20, 90, 16, 32)
 region_filter_clip_enabled = true
