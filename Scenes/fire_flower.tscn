@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3ht3n1fbnsdf"]
 
-[ext_resource type="Texture2D" uid="uid://bg2fp8b6foudc" path="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. 3 - Miscellaneous - Power Ups (1).png" id="1_b3omj"]
+[ext_resource type="Texture2D" uid="uid://bg2fp8b6foudc" path="res://Sprites/Powerups.png" id="1_b3omj"]
 [ext_resource type="Script" uid="uid://lyls5cc1rw4y" path="res://Scripts/fire_flower.gd" id="1_mc8ke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mc8ke"]
@@ -20,9 +20,9 @@ region_rect = Rect2(20, 12, 16, 16)
 [node name="object2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mc8ke")
 
-[node name="object" type="Area2D" parent="."]
+[node name="Fire_flower" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="object"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fire_flower"]
 shape = SubResource("RectangleShape2D_f2blj")
 
-[connection signal="body_entered" from="object" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Fire_flower" to="." method="_on_area_2d_body_entered"]

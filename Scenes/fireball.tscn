@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c5nmipqdvpc73"]
 
 [ext_resource type="Script" uid="uid://beg7xdchc1qot" path="res://Scripts/fireball.gd" id="1_0mxqg"]
-[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/mario-luigi-4 (1) (1).png" id="2_ne4qj"]
+[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="2_ne4qj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olwj8"]
 radius = 6.0

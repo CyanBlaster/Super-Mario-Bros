@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://6hx2s6u80b3f"]
+[gd_scene load_steps=24 format=3 uid="uid://6hx2s6u80b3f"]
 
 [ext_resource type="Script" uid="uid://g7xysheaalgw" path="res://Scripts/mario.gd" id="1_5ue2y"]
 [ext_resource type="Script" uid="uid://coi5585ix30c1" path="res://Scripts/player_animator.gd" id="2_5ue2y"]
-[ext_resource type="Script" uid="uid://bvafwoi56ww6o" path="res://Scenes/camera_2d.gd" id="2_6je0m"]
-[ext_resource type="Script" uid="uid://ropac0kcyxrf" path="res://Scenes/label.gd" id="2_wnnry"]
+[ext_resource type="Script" uid="uid://bvafwoi56ww6o" path="res://Scripts/camera_2d.gd" id="2_6je0m"]
+[ext_resource type="Script" uid="uid://ropac0kcyxrf" path="res://Scripts/label.gd" id="2_wnnry"]
+[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="5_s0had"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_20q7u"]
 radius = 7.0
@@ -11,9 +12,6 @@ height = 28.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ue2y"]
 size = Vector2(16, 30)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_pmqej"]
-load_path = "res://.godot/imported/mario-luigi-4 (1) (1).png-53719de8d605b1d8c7a4ae6c6ecfa0ce.ctex"
 
 [sub_resource type="Animation" id="Animation_5ue2y"]
 length = 0.001
@@ -151,6 +149,9 @@ tracks/0/keys = {
 "values": [Rect2(0, 90, 16, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_72hvn"]
+resource_name = "invincible_idle"
+
 [sub_resource type="Animation" id="Animation_6je0m"]
 resource_name = "jump"
 tracks/0/type = "value"
@@ -166,8 +167,8 @@ tracks/0/keys = {
 "values": [Rect2(73, 90, 16, 32)]
 }
 
-[sub_resource type="Animation" id="Animation_fhuoa"]
-resource_name = "tanooki_idle"
+[sub_resource type="Animation" id="Animation_sb6ie"]
+resource_name = "tanooki_fall"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,7 +179,52 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Rect2(1, 570, 22, 32)]
+"values": [Rect2(105, 570, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_fhuoa"]
+resource_name = "tanooki_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(1, 572, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_rnx3k"]
+resource_name = "tanooki_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(105, 570, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_xioh2"]
+resource_name = "tanooki_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(27, 572, 22, 32), Rect2(53, 572, 22, 32), Rect2(27, 572, 22, 32), Rect2(1, 572, 22, 32)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnnry"]
@@ -192,8 +238,12 @@ _data = {
 &"fire_throw": SubResource("Animation_glbki"),
 &"fire_walk": SubResource("Animation_0ic7m"),
 &"idle": SubResource("Animation_wnnry"),
+&"invincible_idle": SubResource("Animation_72hvn"),
 &"jump": SubResource("Animation_6je0m"),
-&"tanooki_idle": SubResource("Animation_fhuoa")
+&"tanooki_fall": SubResource("Animation_sb6ie"),
+&"tanooki_idle": SubResource("Animation_fhuoa"),
+&"tanooki_jump": SubResource("Animation_rnx3k"),
+&"tanooki_walk": SubResource("Animation_xioh2")
 }
 
 [node name="Mario" type="CharacterBody2D"]
@@ -215,9 +265,9 @@ offset_right = 142.0
 offset_bottom = -77.0
 script = ExtResource("2_wnnry")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Player" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_5ue2y")
 
@@ -229,7 +279,7 @@ sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
 position = Vector2(0, -14)
-texture = SubResource("CompressedTexture2D_pmqej")
+texture = ExtResource("5_s0had")
 flip_h = true
 region_enabled = true
 region_rect = Rect2(20, 90, 16, 32)
@@ -243,4 +293,4 @@ libraries = {
 autoplay = "Walk"
 speed_scale = 1.5
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Player" to="." method="_on_area_2d_body_entered"]

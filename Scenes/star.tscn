@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0kvuksemdnhb"]
+
+[ext_resource type="Script" uid="uid://iil05kpmoyr8" path="res://Scripts/star.gd" id="1_3vu41"]
+[ext_resource type="Texture2D" uid="uid://bg2fp8b6foudc" path="res://Sprites/Powerups.png" id="1_d0spr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vu41"]
+size = Vector2(18, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fwpdb"]
+size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_wgp3r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(110, 12, 16, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_1a88l"]
+resource_name = "star"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.67),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Rect2(110, 12, 16, 16), Rect2(128, 12, 16, 16), Rect2(146, 12, 16, 16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_417aj"]
+_data = {
+&"RESET": SubResource("Animation_wgp3r"),
+&"star": SubResource("Animation_1a88l")
+}
+
+[node name="Star" type="CharacterBody2D"]
+script = ExtResource("1_3vu41")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_3vu41")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fwpdb")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_d0spr")
+region_enabled = true
+region_rect = Rect2(110, 12, 16, 16)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_417aj")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

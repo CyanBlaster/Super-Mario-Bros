@@ -26,8 +26,15 @@ func _process(delta):
 	
 	
 
-func _on_wall_detector_body_entered(_body: Node2D) -> void:
-	speed = -speed 
+func _on_wall_detector_body_entered(body: Node2D) -> void:
+	if body.name == "Mario" && Mario.invincible && timer_started == false:
+		die()
+	elif body.name == "Mario" && !Mario.invincible:
+		print(body.name)
+		Mario.dead = true
+		print("I killed Mario")
+	else:
+		speed = -speed
 	
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
@@ -47,7 +54,7 @@ func die():
 
 
 func _on_player_detector_area_entered(area: Area2D) -> void:
-	print(area.name)
-	if (area.name == "fireball" || area.name == "Area2D") && timer_started == false:
+	print("Area Name:", area.name)
+	if (area.name.begins_with("fireball_")) && timer_started == false:
 		print("die")
 		die()

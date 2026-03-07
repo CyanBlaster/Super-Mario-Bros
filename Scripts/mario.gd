@@ -3,7 +3,7 @@ class_name PlayerController
 
 
 @onready var projectile = preload("res://Scenes/fireball.tscn")
-#@export var camera = load("camera")
+
 
 
 
@@ -12,13 +12,18 @@ class_name PlayerController
 
 @export var speed = 10.0
 @export var jump_power = 10.0
+@export var flight_power = 7
 
 static var powerup = 1
+var level = 1
 var speed_multiplier = 10
 var jump_multiplier = -30
 var sprint = 1
 var jump_sprint = 1
 @export var direction = 1
+@export var oldpower = 1
+@export var invincible = 0
+@export var dead = false
 var d = 1
 var balls = 0
 
@@ -30,16 +35,22 @@ func _physics_process(delta: float) -> void:
 	if(position.y > 800):
 		position.x = -400
 		position.y = 400
-	# Add the gravity.
-	if balls < 0:
-		balls = 0
+	if(dead == true):
+		position.y = 2600
+		dead = false
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_power * jump_multiplier * jump_sprint
-
+	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 3:
+		velocity.y = flight_power * jump_multiplier * jump_sprint
+		if(flight_power > 0):
+			flight_power -= 1
+	if is_on_floor():
+		flight_power = 7
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	direction = Input.get_axis("move_left", "move_right")
@@ -57,37 +68,36 @@ func _physics_process(delta: float) -> void:
 		sprint = 1
 		jump_sprint = 1.25
 	if Input.is_action_just_pressed("fireball") && not (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")):
-		#print(balls)
-		if powerup == 2 && balls < 1:
+		if powerup == 2:
 			balls += 1
 			print(balls)
 			shoot()
 
-
+	#Tracks invinciblity.
+	if(invincible > 0):
+		invincible -= delta
+	
+	
 	move_and_slide()
 	
 	
 func shoot():
+	print("Mario shoot")
 	var instance = projectile.instantiate()
-	add_child(instance)
-	instance.position = Vector2(0, 400)
-	print(instance.position)
-	print(position)
 	if d == 1:
 		instance.direction = 1
 	else:
 		instance.direction = -1
-	instance.name = "fireball"
-	#var instance = projectile.instantiate() 
-	#instance.speed = 1
-	#instance.spawnPos = Vector2(position.x, position.y)
-	#instance.spawnRot = Mario.rotation
-	#Mario.add_child.call_deferred(instance)
+	instance.name = "fireball_" + str(balls)
+	add_child(instance)
 
-	
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "object":
+	if body.name == "Fire_flower":
+		oldpower = powerup
 		powerup = 2
-		print("powerup")
+	elif body.name == "leaf":
+		oldpower = powerup
+		powerup = 3
+		

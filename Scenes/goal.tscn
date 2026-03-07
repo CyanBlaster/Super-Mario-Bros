@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7aoxtcj1up8n"]
 
-[ext_resource type="Texture2D" uid="uid://ciw2ont5h1hdj" path="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. 3 - Enemies & Bosses - Enemies (1).png" id="1_paeek"]
-[ext_resource type="Script" uid="uid://b74j0reg4t0nw" path="res://Scenes/goal.gd" id="1_s0pnd"]
+[ext_resource type="Texture2D" uid="uid://ciw2ont5h1hdj" path="res://Sprites/Enemies and Goal.png" id="1_paeek"]
+[ext_resource type="Script" uid="uid://b74j0reg4t0nw" path="res://Scripts/goal.gd" id="1_s0pnd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s0pnd"]
 radius = 7.071068
