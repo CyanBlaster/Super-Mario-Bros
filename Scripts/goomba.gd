@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
 @export var speed: float
+@export var dead = false
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var sprite_2d = $Animator/Sprite2D
 
-@export var timer = 1.0
+@export var timer = 0.2
 var timer_started : bool
 
 func _physics_process(delta: float) -> void:
@@ -27,34 +28,34 @@ func _process(delta):
 	
 
 func _on_wall_detector_body_entered(body: Node2D) -> void:
-	if body.name == "Mario" && Mario.invincible && timer_started == false:
+	if body.name == "Mario" && Mario.invincible && timer_started == false && dead == false:
 		die()
-	elif body.name == "Mario" && !Mario.invincible:
-		print(body.name)
-		Mario.dead = true
-		print("I killed Mario")
-	else:
+	else: 
 		speed = -speed
+	if body.name == "shell" && timer_started == false && dead == false:
+		die()
 	
 
 func _on_player_detector_body_entered(body: Node2D) -> void:
-	if body.name == "Mario" && timer_started == false:
+	if body.name == "Mario" && timer_started == false && dead == false:
+		Mario.hit = true
 		die()
 
 
 
 func die():
+	dead = true
 	collision_shape_2d.queue_free()
 	velocity.x = 0
 	timer_started = true
 
 
-
-	
-
-
 func _on_player_detector_area_entered(area: Area2D) -> void:
-	print("Area Name:", area.name)
-	if (area.name.begins_with("fireball_")) && timer_started == false:
+	if (area.name.begins_with("fireball_")) && timer_started == false && dead == false:
 		print("die")
 		die()
+	elif(area.name == "Player" && dead == false):
+		Mario.hit = true
+		die()
+	else:
+		print(area.name)

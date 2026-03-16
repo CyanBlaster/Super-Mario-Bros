@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://6hx2s6u80b3f"]
+[gd_scene load_steps=28 format=3 uid="uid://6hx2s6u80b3f"]
 
 [ext_resource type="Script" uid="uid://g7xysheaalgw" path="res://Scripts/mario.gd" id="1_5ue2y"]
 [ext_resource type="Script" uid="uid://coi5585ix30c1" path="res://Scripts/player_animator.gd" id="2_5ue2y"]
@@ -167,6 +167,66 @@ tracks/0/keys = {
 "values": [Rect2(73, 90, 16, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_fl7gy"]
+resource_name = "p_fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(105, 348, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_3arnh"]
+resource_name = "p_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 348, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_ogss7"]
+resource_name = "p_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(105, 348, 22, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_btw1g"]
+resource_name = "p_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(27, 348, 22, 32), Rect2(53, 348, 22, 32), Rect2(27, 348, 22, 32), Rect2(0, 348, 22, 32)]
+}
+
 [sub_resource type="Animation" id="Animation_sb6ie"]
 resource_name = "tanooki_fall"
 tracks/0/type = "value"
@@ -240,6 +300,10 @@ _data = {
 &"idle": SubResource("Animation_wnnry"),
 &"invincible_idle": SubResource("Animation_72hvn"),
 &"jump": SubResource("Animation_6je0m"),
+&"p_fall": SubResource("Animation_fl7gy"),
+&"p_idle": SubResource("Animation_3arnh"),
+&"p_jump": SubResource("Animation_ogss7"),
+&"p_walk": SubResource("Animation_btw1g"),
 &"tanooki_fall": SubResource("Animation_sb6ie"),
 &"tanooki_idle": SubResource("Animation_fhuoa"),
 &"tanooki_jump": SubResource("Animation_rnx3k"),
@@ -293,4 +357,5 @@ libraries = {
 autoplay = "Walk"
 speed_scale = 1.5
 
+[connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="body_entered" from="Player" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://qyme4xkx6dsh"]
+
+[ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="1_nuqqx"]
+[ext_resource type="Script" uid="uid://b1hvv282pgms6" path="res://state_machine.gd" id="2_oo05u"]
+
+[sub_resource type="Animation" id="Animation_oo05u"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 34, 17, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_6jo5a"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(85, 30, 17, 29)]
+}
+
+[sub_resource type="Animation" id="Animation_nuqqx"]
+resource_name = "Powerup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.17, 0.33, 0.5, 0.67, 0.83),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 34, 17, 26), Rect2(0, 66, 17, 26), Rect2(0, 34, 17, 26), Rect2(0, 66, 17, 26), Rect2(0, 34, 17, 26), Rect2(0, 66, 17, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_ovnas"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 34, 17, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_a3sro"]
+resource_name = "Walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(34, 34, 17, 26), Rect2(51, 34, 17, 26)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6rjni"]
+_data = {
+&"Idle": SubResource("Animation_oo05u"),
+&"Jump": SubResource("Animation_6jo5a"),
+&"Powerup": SubResource("Animation_nuqqx"),
+&"RESET": SubResource("Animation_ovnas"),
+&"Walk": SubResource("Animation_a3sro")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nuqqx"]
+radius = 8.0
+height = 26.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="Animator" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Animator"]
+texture = ExtResource("1_nuqqx")
+region_enabled = true
+region_rect = Rect2(0, 34, 17, 26)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator"]
+libraries = {
+&"": SubResource("AnimationLibrary_6rjni")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_nuqqx")
+
+[node name="State Machine" type="Node2D" parent="."]
+script = ExtResource("2_oo05u")
+
+[node name="Idle" type="Node2D" parent="State Machine"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxt8v1k6k1r7a"]
+
+[ext_resource type="Texture2D" uid="uid://b1or8bxesivwx" path="res://Sprites/enemies.png" id="1_g08il"]
+[ext_resource type="Script" uid="uid://bcrnk7dyvbim2" path="res://Scenes/shell.gd" id="1_j4ghq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g08il"]
+size = Vector2(18, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4ghq"]
+size = Vector2(16, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hyhe"]
+size = Vector2(16, 4)
+
+[node name="shell" type="CharacterBody2D"]
+script = ExtResource("1_j4ghq")
+
+[node name="Wall_Detector" type="Area2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Detector"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_g08il")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_g08il")
+region_enabled = true
+region_rect = Rect2(360, 3, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_j4ghq")
+
+[node name="Player_Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_Detector"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_2hyhe")
+
+[connection signal="body_entered" from="Wall_Detector" to="." method="_on_wall_detector_body_entered"]
+[connection signal="area_entered" from="Player_Detector" to="." method="_on_player_detector_area_entered"]

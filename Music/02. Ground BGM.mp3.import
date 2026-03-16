@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bupebnsh4yp4v"
+path="res://.godot/imported/02. Ground BGM.mp3-35bf382f44482d5e00263d4fec455092.mp3str"
+
+[deps]
+
+source_file="res://Music/02. Ground BGM.mp3"
+dest_files=["res://.godot/imported/02. Ground BGM.mp3-35bf382f44482d5e00263d4fec455092.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

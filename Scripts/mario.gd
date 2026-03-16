@@ -13,6 +13,7 @@ class_name PlayerController
 @export var speed = 10.0
 @export var jump_power = 10.0
 @export var flight_power = 7
+@export var hit = false
 
 static var powerup = 1
 var level = 1
@@ -35,9 +36,12 @@ func _physics_process(delta: float) -> void:
 	if(position.y > 800):
 		position.x = -400
 		position.y = 400
-	if(dead == true):
+	if(dead == true): 
 		position.y = 2600
 		dead = false
+	if(hit):
+		velocity.y = jump_power * jump_multiplier * jump_sprint
+		hit = false
 	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -47,6 +51,8 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_power * jump_multiplier * jump_sprint
 	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 3:
 		velocity.y = flight_power * jump_multiplier * jump_sprint
+	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 4:
+		velocity.y = flight_power * 2 * jump_multiplier * jump_sprint
 		if(flight_power > 0):
 			flight_power -= 1
 	if is_on_floor():
@@ -61,13 +67,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * sprint * speed_multiplier)
 	
+	
+	
 	if Input.is_action_pressed("sprint"):
 		sprint = 3
 		jump_sprint = 1.25
 	else:
 		sprint = 1
 		jump_sprint = 1.25
-	if Input.is_action_just_pressed("fireball") && not (Input.is_action_pressed("move_left") || Input.is_action_pressed("move_right")):
+	if Input.is_action_just_pressed("fireball"):
 		if powerup == 2:
 			balls += 1
 			print(balls)
@@ -89,7 +97,9 @@ func shoot():
 	else:
 		instance.direction = -1
 	instance.name = "fireball_" + str(balls)
-	add_child(instance)
+	instance.position = position
+	get_tree().current_scene.add_child(instance)
+	#add_child(instance)
 
 
 
@@ -100,4 +110,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	elif body.name == "leaf":
 		oldpower = powerup
 		powerup = 3
+
+
+func _on_player_area_entered(area: Area2D) -> void:
+	pass
+	if(area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector"):
+		dead = true
+	if(area.name == "GoombaPlayerDetector"):
+		velocity.y = jump_power * jump_multiplier * jump_sprint
 		

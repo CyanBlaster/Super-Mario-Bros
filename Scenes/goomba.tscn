@@ -60,10 +60,10 @@ _data = {
 size = Vector2(14, 13)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_508bv"]
-size = Vector2(18, 13)
+size = Vector2(18, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp31q"]
-size = Vector2(14, 3.5)
+size = Vector2(14, 6.5)
 
 [node name="Goomba" type="CharacterBody2D"]
 script = ExtResource("1_jke6y")
@@ -71,7 +71,7 @@ speed = 5000.0
 
 [node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("PlayerDetector", "goomba", "animation_player")]
 script = ExtResource("2_yj1s3")
-PlayerDetector = NodePath("../PlayerDetector")
+PlayerDetector = NodePath("../GoombaPlayerDetector")
 goomba = NodePath("..")
 animation_player = NodePath("AnimationPlayer")
 
@@ -90,18 +90,18 @@ region_rect = Rect2(0, 4, 16, 16)
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_yj1s3")
 
-[node name="WallDetector" type="Area2D" parent="."]
+[node name="GoombaWallDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
-position = Vector2(0, -1.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoombaWallDetector"]
 shape = SubResource("RectangleShape2D_508bv")
 
-[node name="PlayerDetector" type="Area2D" parent="."]
+[node name="GoombaPlayerDetector" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-position = Vector2(0, -6.75)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoombaPlayerDetector"]
+position = Vector2(0, -5.25)
 shape = SubResource("RectangleShape2D_qp31q")
 
-[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_entered"]
-[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
-[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="area_entered" from="GoombaWallDetector" to="." method="_on_goomba_wall_detector_area_entered"]
+[connection signal="body_entered" from="GoombaWallDetector" to="." method="_on_wall_detector_body_entered"]
+[connection signal="area_entered" from="GoombaPlayerDetector" to="." method="_on_player_detector_area_entered"]
+[connection signal="body_entered" from="GoombaPlayerDetector" to="." method="_on_player_detector_body_entered"]

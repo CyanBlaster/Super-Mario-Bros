@@ -4,14 +4,12 @@ extends CharacterBody2D
 @onready var collision_shape_2d = $CollisionShape2D
 
 
-
-
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 func _process(_delta):
-	move_and_slide() 
+	move_and_slide()
 	
 	
 

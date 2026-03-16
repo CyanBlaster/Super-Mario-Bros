@@ -5,7 +5,7 @@ extends Node2D
 @export var animation_player : AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _process(_delta):
-	if(goomba.timer < 1):
+	if(goomba.timer < 0.2):
 		animation_player.play("death")
 	else:
 		animation_player.play("walk")
