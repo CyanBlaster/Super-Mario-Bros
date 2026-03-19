@@ -21,6 +21,7 @@ var speed_multiplier = 10
 var jump_multiplier = -30
 var sprint = 1
 var jump_sprint = 1
+var cooldown = 0
 @export var direction = 1
 @export var oldpower = 1
 @export var invincible = 0
@@ -84,6 +85,8 @@ func _physics_process(delta: float) -> void:
 	#Tracks invinciblity.
 	if(invincible > 0):
 		invincible -= delta
+	if(cooldown > 0):
+		cooldown -= delta
 	
 	
 	move_and_slide()
@@ -110,12 +113,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	elif body.name == "leaf":
 		oldpower = powerup
 		powerup = 3
+	
 
 
 func _on_player_area_entered(area: Area2D) -> void:
 	pass
-	if(area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector"):
-		dead = true
-	if(area.name == "GoombaPlayerDetector"):
+	if((area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector" or area.name == "Peach_Collision") && cooldown <= 0):
+		if(powerup == 1):
+			dead = true
+		else:
+			powerup = 1
+			cooldown = 1
+	if(area.name == "GoombaPlayerDetector" or area.name == "PeachHitDetector"):
 		velocity.y = jump_power * jump_multiplier * jump_sprint
+		if(area.name == "PeachHitDetector"):
+			Peach.boss_health -= 1
+			print(Peach.boss_health)
 		

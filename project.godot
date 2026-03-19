@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 [autoload]
 
 Mario="*res://Scripts/mario.gd"
+Peach="*res://peach.gd"
 
 [display]
 

@@ -1428,6 +1428,7 @@ position = Vector2(3120, 363)
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fvg4f")
+autoplay = true
 script = ExtResource("9_gqkfj")
 
 [node name="Powerup Sound Effect" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,30 @@
+extends CharacterBody2D
+class_name boss
+@onready var sprite : Sprite2D = $Animator/Sprite2D
+@export var boss_health = 10
+@export var moving_direction: Vector2
+@export var velo : Vector2
+
+var move_speed = 5
+
+func _process(_delta: float) -> void:
+	pass
+	#print(boss_health)
+	#print(get_node("/root/Peach/Animator"))
+	#if velocity.x < 0:
+		#sprite.flip_h = true 
+	#else:
+		#sprite.flip_h = false
+
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	
+	
+	velocity += Peach.moving_direction * move_speed
+	print("velocity: ", velocity)
+	
+	
+	move_and_slide()
+	
+	

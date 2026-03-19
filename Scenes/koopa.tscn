@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://d0lrwahxu4vvp"]
 
 [ext_resource type="Texture2D" uid="uid://b1or8bxesivwx" path="res://Sprites/enemies.png" id="1_l6r1p"]
-[ext_resource type="Script" uid="uid://bev1lumnaun7k" path="res://Scenes/koopa.gd" id="1_n0nud"]
-[ext_resource type="Script" uid="uid://ns33b1ioh1lr" path="res://Scenes/koopa_animator.gd" id="2_qjbdu"]
+[ext_resource type="Script" uid="uid://bev1lumnaun7k" path="res://Scripts/koopa.gd" id="1_n0nud"]
+[ext_resource type="Script" uid="uid://ns33b1ioh1lr" path="res://Scripts/koopa_animator.gd" id="2_qjbdu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l6r1p"]
 size = Vector2(15, 9.5)
