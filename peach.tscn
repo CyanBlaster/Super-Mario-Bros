@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://qyme4xkx6dsh"]
+[gd_scene load_steps=17 format=3 uid="uid://qyme4xkx6dsh"]
 
 [ext_resource type="Script" uid="uid://bq7jg3u685p3p" path="res://peach.gd" id="1_a3sro"]
 [ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="1_nuqqx"]
 [ext_resource type="Script" uid="uid://bqfbxr554iaiw" path="res://peach_animator.gd" id="2_6jo5a"]
 [ext_resource type="Script" uid="uid://b1hvv282pgms6" path="res://state_machine.gd" id="2_oo05u"]
 [ext_resource type="Script" uid="uid://diyjqjcucdqq2" path="res://Scripts/BossIdle.gd" id="3_ovnas"]
+[ext_resource type="Script" uid="uid://ctrhl2jqd7o6s" path="res://Scripts/BossPowerup.gd" id="4_6jo5a"]
 
 [sub_resource type="Animation" id="Animation_oo05u"]
 resource_name = "Idle"
@@ -81,8 +82,24 @@ tracks/0/keys = {
 "values": [Rect2(34, 34, 17, 26), Rect2(51, 34, 17, 26)]
 }
 
+[sub_resource type="Animation" id="Animation_6rjni"]
+resource_name = "Fire_Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 67, 17, 26)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6rjni"]
 _data = {
+&"Fire_Idle": SubResource("Animation_6rjni"),
 &"Idle": SubResource("Animation_oo05u"),
 &"Jump": SubResource("Animation_6jo5a"),
 &"Powerup": SubResource("Animation_nuqqx"),
@@ -102,10 +119,11 @@ size = Vector2(13, 6)
 [node name="Peach" type="CharacterBody2D"]
 script = ExtResource("1_a3sro")
 
-[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("animation_player", "sprite")]
+[node name="Animator" type="Node2D" parent="." node_paths=PackedStringArray("animation_player", "sprite", "statemachine")]
 script = ExtResource("2_6jo5a")
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+statemachine = NodePath("../State Machine")
 
 [node name="Sprite2D" type="Sprite2D" parent="Animator"]
 texture = ExtResource("1_nuqqx")
@@ -124,7 +142,6 @@ position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_6jo5a")
 
 [node name="State Machine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-visible = false
 position = Vector2(0, -23)
 script = ExtResource("2_oo05u")
 initial_state = NodePath("BossIdle")
@@ -133,6 +150,11 @@ initial_state = NodePath("BossIdle")
 script = ExtResource("3_ovnas")
 peach = NodePath("../..")
 metadata/_custom_type_script = "uid://diyjqjcucdqq2"
+
+[node name="BossPowerup" type="Node" parent="State Machine" node_paths=PackedStringArray("peach")]
+script = ExtResource("4_6jo5a")
+peach = NodePath("../..")
+metadata/_custom_type_script = "uid://ctrhl2jqd7o6s"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 11)

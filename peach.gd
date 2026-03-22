@@ -8,7 +8,9 @@ class_name boss
 var move_speed = 5
 
 func _process(_delta: float) -> void:
-	pass
+	if(boss_health <= 0):
+		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/Levels/ending.tscn")
 	#print(boss_health)
 	#print(get_node("/root/Peach/Animator"))
 	#if velocity.x < 0:
@@ -20,10 +22,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	
-	velocity += Peach.moving_direction * move_speed
-	print("velocity: ", velocity)
-	
+	boss_health = Peach.boss_health
+	if(boss_health > 0): 
+		velocity += Peach.moving_direction * move_speed
 	
 	move_and_slide()
 	

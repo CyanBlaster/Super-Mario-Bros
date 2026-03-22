@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Super Mario"
-run/main_scene="uid://cu6o8my11j431"
+run/main_scene="uid://cbjawu1vojo16"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]

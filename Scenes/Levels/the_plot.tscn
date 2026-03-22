@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://gbeljbvetxi7"]
+
+[ext_resource type="Script" uid="uid://b0dm6cdmy2bjm" path="res://Scenes/Levels/the_plot.gd" id="1_f2iot"]
+[ext_resource type="Texture2D" uid="uid://dlw0ch2oqsjjy" path="res://Sprites/thumbnail.png" id="1_qfukb"]
+[ext_resource type="Texture2D" uid="uid://mbocktq0sx4d" path="res://Sprites/oh.png" id="2_f2iot"]
+[ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="3_1j6sh"]
+[ext_resource type="Texture2D" uid="uid://dq5rksis2jy53" path="res://Sprites/Bosses.png" id="4_4bf1k"]
+
+[node name="The Plot" type="Node2D"]
+script = ExtResource("1_f2iot")
+
+[node name="Oh" type="Sprite2D" parent="."]
+position = Vector2(895, 110)
+texture = ExtResource("1_qfukb")
+
+[node name="God" type="Sprite2D" parent="."]
+position = Vector2(162, 315)
+scale = Vector2(3.5767972, 3.8531258)
+texture = ExtResource("2_f2iot")
+region_enabled = true
+region_rect = Rect2(245, 133, 68, 40)
+
+[node name="Damn" type="Sprite2D" parent="."]
+position = Vector2(35.625, 446.375)
+scale = Vector2(4.1527777, 4.273437)
+texture = ExtResource("2_f2iot")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 90, 18, 32)
+
+[node name="It" type="Sprite2D" parent="."]
+position = Vector2(846.00006, 350.00003)
+scale = Vector2(3.758338, 4.1500006)
+texture = ExtResource("3_1j6sh")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(0, 30, 17, 30)
+
+[node name="Not" type="Sprite2D" parent="."]
+position = Vector2(880.00006, 433)
+scale = Vector2(5.3, 4.7)
+texture = ExtResource("4_4bf1k")
+region_enabled = true
+region_rect = Rect2(0, 916, 40, 50)
+
+[node name="Again" type="Label" parent="."]
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 1100.0
+offset_bottom = 201.0
+text = "Welp, Princess Peach got kidnapped again. But this time, Mario suspects something's up. Why does the princess keep letting herself
+get kidnapped so easily by Bowser? So Mario sets off on his quest to find Princess Peach once more, but this time, he isn't saving her, 
+he's going to get answers; once and for all.
+
+
+Press X to continue!"

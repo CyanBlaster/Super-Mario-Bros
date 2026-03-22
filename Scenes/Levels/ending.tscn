@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcj03y78akn4h"]
+
+[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="1_bfbvn"]
+[ext_resource type="Texture2D" uid="uid://ch5om0bhc8s27" path="res://Sprites/Yoshi's House.webp" id="1_rwivm"]
+[ext_resource type="Texture2D" uid="uid://mm2tdu2mfhby" path="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. & The Lost Levels - Backgrounds - Castle 1.png" id="2_c1jus"]
+[ext_resource type="Texture2D" uid="uid://dq5rksis2jy53" path="res://Sprites/Bosses.png" id="2_iaai7"]
+[ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="3_rwivm"]
+[ext_resource type="AudioStream" uid="uid://bjao7glr7pafy" path="res://Music/05. Ending.mp3" id="6_c1jus"]
+[ext_resource type="Script" uid="uid://dkio2d7d0a5am" path="res://Scenes/Levels/background_music.gd" id="7_03fdi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Yoshi\'sHouse" type="Sprite2D" parent="."]
+position = Vector2(576.00006, 340.00003)
+scale = Vector2(4.484375, 3.1160715)
+texture = ExtResource("1_rwivm")
+
+[node name="SnesSuperMarioAllStarsSuperMarioBros_&TheLostLevelsBackgroundsCastle1" type="Sprite2D" parent="."]
+position = Vector2(583, 109.5)
+scale = Vector2(6.18, 1.7875)
+texture = ExtResource("2_c1jus")
+region_enabled = true
+region_rect = Rect2(1684, 0, 100, 80)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 305.0
+offset_top = 46.0
+offset_right = 872.0
+offset_bottom = 191.0
+text = "Congratulations! You defeated that cheating little b-
+Right this is an E for Everyone production you defeated that little cheater 
+and now you and your bros are having a great party!
+
+Thank you so much for-a playing my game!"
+
+[node name="Luigi" type="Sprite2D" parent="."]
+position = Vector2(726.99994, 282)
+scale = Vector2(5.094245, 5.1981306)
+texture = ExtResource("1_bfbvn")
+region_enabled = true
+region_rect = Rect2(73, 178, 16, 27)
+
+[node name="Mario" type="Sprite2D" parent="."]
+position = Vector2(388, 276)
+scale = Vector2(5.0625, 4.851851)
+texture = ExtResource("1_bfbvn")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(73, 93, 16, 27)
+
+[node name="Bosses" type="Sprite2D" parent="."]
+position = Vector2(560, 395)
+scale = Vector2(4.3249955, 4.5875)
+texture = ExtResource("2_iaai7")
+region_enabled = true
+region_rect = Rect2(0, 1020, 40, 40)
+
+[node name="PrincessPeach" type="Sprite2D" parent="."]
+position = Vector2(560.00006, 561)
+scale = Vector2(3.5, 3.5555556)
+texture = ExtResource("3_rwivm")
+region_enabled = true
+region_rect = Rect2(240, 9, 14, 18)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_c1jus")
+script = ExtResource("7_03fdi")

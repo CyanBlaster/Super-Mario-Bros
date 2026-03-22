@@ -52,11 +52,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_power * jump_multiplier * jump_sprint
 	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 3:
 		velocity.y = flight_power * jump_multiplier * jump_sprint
-	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 4:
-		velocity.y = flight_power * 2 * jump_multiplier * jump_sprint
 		if(flight_power > 0):
 			flight_power -= 1
-	if is_on_floor():
+	if Input.is_action_just_pressed("jump") and !is_on_floor() and powerup == 4:
+		velocity.y = flight_power * 3 * jump_multiplier * jump_sprint
+		if(flight_power > 0):
+			flight_power -= 1
+	if is_on_floor(): 
 		flight_power = 7
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -78,8 +80,7 @@ func _physics_process(delta: float) -> void:
 		jump_sprint = 1.25
 	if Input.is_action_just_pressed("fireball"):
 		if powerup == 2:
-			balls += 1
-			print(balls)
+			balls += 1 
 			shoot()
 
 	#Tracks invinciblity.
@@ -116,10 +117,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	
 
 
+
 func _on_player_area_entered(area: Area2D) -> void:
-	pass
-	if((area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector" or area.name == "Peach_Collision") && cooldown <= 0):
+	if((area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector" or area.name == "Peach_Collision") && cooldown <= 0 && invincible <= 0):
 		if(powerup == 1):
+			print("Ouch", invincible)
 			dead = true
 		else:
 			powerup = 1
@@ -129,4 +131,6 @@ func _on_player_area_entered(area: Area2D) -> void:
 		if(area.name == "PeachHitDetector"):
 			Peach.boss_health -= 1
 			print(Peach.boss_health)
-		
+	if area.name == "star":
+		print(invincible)
+		invincible = 10

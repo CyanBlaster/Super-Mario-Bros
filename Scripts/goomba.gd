@@ -8,6 +8,13 @@ extends CharacterBody2D
 @export var timer = 0.2
 var timer_started : bool
 
+func _ready() -> void:
+	var direction = randf_range(-1, 1)
+	if(direction >= 0):
+		speed = speed
+	else:
+		speed = -speed
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -29,7 +36,7 @@ func _process(delta):
 
 func _on_wall_detector_body_entered(body: Node2D) -> void:
 	if body.name == "Mario" && Mario.invincible && timer_started == false && dead == false:
-		die()
+		die() 
 	else: 
 		speed = -speed
 	if body.name == "shell" && timer_started == false && dead == false:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bjao7glr7pafy"
+path="res://.godot/imported/05. Ending.mp3-49d44a5b65c5da9fa4dadbfd9d590026.mp3str"
+
+[deps]
+
+source_file="res://Music/05. Ending.mp3"
+dest_files=["res://.godot/imported/05. Ending.mp3-49d44a5b65c5da9fa4dadbfd9d590026.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
