@@ -11,13 +11,15 @@ config_version=5
 [application]
 
 config/name="Super Mario"
-run/main_scene="uid://cbjawu1vojo16"
+run/main_scene="uid://6te8imd38wjx"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 Mario="*res://Scripts/mario.gd"
 Peach="*res://peach.gd"
+Boss="*res://Scripts/BossIdle.gd"
+finalboss="*res://peach.gd"
 
 [display]
 

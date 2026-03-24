@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="1_bfbvn"]
 [ext_resource type="Texture2D" uid="uid://ch5om0bhc8s27" path="res://Sprites/Yoshi's House.webp" id="1_rwivm"]
-[ext_resource type="Texture2D" uid="uid://mm2tdu2mfhby" path="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. & The Lost Levels - Backgrounds - Castle 1.png" id="2_c1jus"]
+[ext_resource type="Texture2D" uid="uid://mm2tdu2mfhby" path="res://Sprites/Bowser's Background.png" id="2_c1jus"]
 [ext_resource type="Texture2D" uid="uid://dq5rksis2jy53" path="res://Sprites/Bosses.png" id="2_iaai7"]
 [ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="3_rwivm"]
 [ext_resource type="AudioStream" uid="uid://bjao7glr7pafy" path="res://Music/05. Ending.mp3" id="6_c1jus"]
@@ -64,4 +64,5 @@ region_rect = Rect2(240, 9, 14, 18)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_c1jus")
+autoplay = true
 script = ExtResource("7_03fdi")

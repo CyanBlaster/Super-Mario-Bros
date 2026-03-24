@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mm2tdu2mfhby"
-path="res://.godot/imported/SNES - Super Mario All-Stars_ Super Mario Bros. & The Lost Levels - Backgrounds - Castle 1.png-1ae3e06e9a2ccb92a44f6ddbddbfb1bc.ctex"
+uid="uid://b8u4venc6sqfh"
+path="res://.godot/imported/cutscene.png-1e2a5dd335410cc7b5c8277125c4fe87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SNES - Super Mario All-Stars_ Super Mario Bros. & The Lost Levels - Backgrounds - Castle 1.png"
-dest_files=["res://.godot/imported/SNES - Super Mario All-Stars_ Super Mario Bros. & The Lost Levels - Backgrounds - Castle 1.png-1ae3e06e9a2ccb92a44f6ddbddbfb1bc.ctex"]
+source_file="res://Sprites/cutscene.png"
+dest_files=["res://.godot/imported/cutscene.png-1e2a5dd335410cc7b5c8277125c4fe87.ctex"]
 
 [params]
 

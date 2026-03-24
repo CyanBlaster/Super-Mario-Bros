@@ -18,7 +18,7 @@ func _process(_delta):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if(body.name == "Mario" && !hit):
-		var powerup = rng.randf_range(0, 4.0)
+		var powerup = rng.randf_range(0, 3.0)
 		var instance
 		if(powerup >= 0 && powerup < 1):	
 			instance = flower.instantiate()

@@ -8,4 +8,4 @@ func _process(_delta):
 	if(koopa.speed > 0):
 		animation_player.play("walking_right")
 	else:
-		animation_player.play("walking_left")
+		animation_player.play("walking_left") 

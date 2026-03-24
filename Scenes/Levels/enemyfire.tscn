@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhu7rvjlgk5aa"]
+
+[ext_resource type="Texture2D" uid="uid://dq5rksis2jy53" path="res://Sprites/Bosses.png" id="1_e8d4i"]
+[ext_resource type="Script" uid="uid://die8yfu0vemfa" path="res://Scenes/Levels/enemyfire.gd" id="1_gxhkp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gxhkp"]
+size = Vector2(22, 10)
+
+[node name="enemyfire" type="Area2D"]
+script = ExtResource("1_gxhkp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_gxhkp")
+
+[node name="Bosses" type="Sprite2D" parent="."]
+texture = ExtResource("1_e8d4i")
+region_enabled = true
+region_rect = Rect2(100, 982, 32, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

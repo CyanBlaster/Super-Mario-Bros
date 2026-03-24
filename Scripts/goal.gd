@@ -30,3 +30,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		queue_free()
 		Mario.level += 1 
 		print("boss_level")
+	elif body.name == "Mario" && Mario.level == 4: 
+		get_tree().change_scene_to_file("res://Scenes/Levels/boss_cutscene.tscn")
+		queue_free()
+		Mario.level += 1 
+		print("boss_fight")
