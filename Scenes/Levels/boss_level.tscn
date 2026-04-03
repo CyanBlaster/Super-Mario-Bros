@@ -5257,8 +5257,9 @@ stream = ExtResource("9_2u27r")
 autoplay = true
 script = ExtResource("10_tgqw5")
 
-[node name="Goal" parent="." instance=ExtResource("11_daq8m")]
+[node name="Goal" parent="." node_paths=PackedStringArray("mario") instance=ExtResource("11_daq8m")]
 position = Vector2(1309, 405)
+mario = NodePath("../Mario")
 
 [node name="Powerup Sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_4wh5o")

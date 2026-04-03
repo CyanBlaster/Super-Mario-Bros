@@ -22,13 +22,14 @@ var cooldown = 0
 @export var dead = false
 @export var health = 3
 @export var coins = 0
+@export var prev_coins = 0
 var d = 1
 var balls = 0
 var balls2 = 0
 
 func _ready() -> void: 
 	position.y = 400
-
+ 
 func _physics_process(delta: float) -> void:
 	if(position.y > 800):
 		position.x = -400

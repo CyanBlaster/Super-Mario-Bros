@@ -48,7 +48,7 @@ func die():
 		instance.position.y = position.y -16
 		print(instance.position.x, " ", instance.position.y)
 
-		get_tree().current_scene.add_child(instance)
+		get_tree().current_scene.add_child(instance) 
 	elif(gold):
 		var instance = coin.instantiate()
 		instance.position.x = position.x

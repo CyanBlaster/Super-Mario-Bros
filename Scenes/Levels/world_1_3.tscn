@@ -1446,8 +1446,9 @@ position = Vector2(32, 0)
 [node name="Lucky Block2" parent="Lucky Block" instance=ExtResource("4_61sjs")]
 position = Vector2(1184, 32)
 
-[node name="Goal" parent="." instance=ExtResource("6_26p5w")]
+[node name="Goal" parent="." node_paths=PackedStringArray("mario") instance=ExtResource("6_26p5w")]
 position = Vector2(4914, 298)
+mario = NodePath("../Mario")
 
 [node name="coin" parent="Goal" instance=ExtResource("7_ljxoj")]
 position = Vector2(-557, 41)

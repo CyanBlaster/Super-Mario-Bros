@@ -1446,8 +1446,9 @@ position = Vector2(2069, 382)
 [node name="coin3" parent="." instance=ExtResource("2_u04up")]
 position = Vector2(2045, 397)
 
-[node name="Goal" parent="." instance=ExtResource("7_lnlxc")]
+[node name="Goal" parent="." node_paths=PackedStringArray("mario") instance=ExtResource("7_lnlxc")]
 position = Vector2(3120, 363)
+mario = NodePath("../Mario")
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fvg4f")

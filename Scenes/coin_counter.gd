@@ -3,5 +3,5 @@ extends Label
 
 
 func _process(_delta):
-	text = "Coins: " + str(player.coins) 
+	text = "Coins: " + str(player.coins + Mario.coins) 
  
