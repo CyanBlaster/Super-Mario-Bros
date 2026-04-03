@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqw42c8iavdn5"]
+
+[ext_resource type="Texture2D" uid="uid://cbj3o1j7i7efc" path="res://Sprites/gold_and_squirrel_mario_sprites__ultimate__by_kronickritter_df31cto (1).png" id="1_u2yf6"]
+[ext_resource type="Script" uid="uid://b6ytir03spoe4" path="res://Scenes/goldball.gd" id="1_w4try"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4try"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_w4try")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_w4try")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_u2yf6")
+region_enabled = true
+region_rect = Rect2(150, 200, 16, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

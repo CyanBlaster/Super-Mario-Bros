@@ -6,8 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gxhkp"]
 size = Vector2(22, 10)
 
-[node name="enemyfire" type="Area2D"]
+[node name="enemyfire" type="Area2D" node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_gxhkp")
+sprite = NodePath("Bosses")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

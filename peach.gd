@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name boss
 @onready var sprite : Sprite2D = $Animator/Sprite2D
-@export var boss_health = 10
+@export var boss_health = 50
 @export var moving_direction: Vector2
 @export var velo : Vector2
 

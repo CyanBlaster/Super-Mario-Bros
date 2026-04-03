@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqyc3e4kxkxps"]
+
+[ext_resource type="AudioStream" uid="uid://chdn7xaad4jks" path="res://Music/KAT - Pull the Trigger ft. Yi Xi (SynthV Original Song).mp3" id="1_5mut8"]
+[ext_resource type="Script" uid="uid://dph6lgj43wnuf" path="res://Scenes/Levels/credits.gd" id="1_8x42t"]
+[ext_resource type="Texture2D" uid="uid://dlw0ch2oqsjjy" path="res://Sprites/thumbnail.png" id="2_owgre"]
+[ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="4_gjait"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_8x42t")
+
+[node name="Thumbnail" type="Sprite2D" parent="."]
+position = Vector2(269, 227)
+texture = ExtResource("2_owgre")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5mut8")
+autoplay = true
+
+[node name="Label" type="Label" parent="."]
+offset_left = 269.0
+offset_top = 73.0
+offset_right = 933.0
+offset_bottom = 252.0
+text = "                                                                        Credits:
+                           TheSpritersResource and MarioUniverse for Sprites
+                                     Girl Hell 1999 by femtanyl - the boss music
+Pull the Trigger ft. Yi Xi - by KAT - the credit music, which you are listening to right now!
+                                         Or not, give it a few seconds to kick in.
+
+                                              Super Mario owned by Nintendo"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 265.0
+offset_top = 433.0
+offset_right = 867.0
+offset_bottom = 560.0
+text = "   And perhaps, most importantly, for Hack Club for giving me the opportunity 
+                              to step out of my comfort zone, and learn
+                                          to create something incredible!
+
+                  If you want to play again, press Z to return to the tutorial. 
+Also, feel free to search the levels for secrets! Hint:They're in the walls..."
+
+[node name="MarioAndLuigi" type="Sprite2D" parent="."]
+position = Vector2(229, 339)
+scale = Vector2(4.861111, 4.325001)
+texture = ExtResource("4_gjait")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(72, 87, 18, 40)

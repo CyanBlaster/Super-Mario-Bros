@@ -1,10 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://6hx2s6u80b3f"]
+[gd_scene load_steps=40 format=3 uid="uid://6hx2s6u80b3f"]
 
 [ext_resource type="Script" uid="uid://g7xysheaalgw" path="res://Scripts/mario.gd" id="1_5ue2y"]
 [ext_resource type="Script" uid="uid://coi5585ix30c1" path="res://Scripts/player_animator.gd" id="2_5ue2y"]
 [ext_resource type="Script" uid="uid://bvafwoi56ww6o" path="res://Scripts/camera_2d.gd" id="2_6je0m"]
-[ext_resource type="Script" uid="uid://ropac0kcyxrf" path="res://Scripts/label.gd" id="2_wnnry"]
+[ext_resource type="Script" uid="uid://urp431mqiiyo" path="res://label.gd" id="3_0ic7m"]
+[ext_resource type="Script" uid="uid://b4u4uavy8nt3h" path="res://Scenes/coin_counter.gd" id="3_wih1i"]
 [ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="5_s0had"]
+[ext_resource type="Texture2D" uid="uid://cbj3o1j7i7efc" path="res://Sprites/gold_and_squirrel_mario_sprites__ultimate__by_kronickritter_df31cto (1).png" id="5_wih1i"]
+[ext_resource type="PackedScene" uid="uid://cwpe54ah6pnlp" path="res://Scenes/health_bar.tscn" id="6_mmods"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_20q7u"]
 radius = 7.0
@@ -26,6 +29,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Rect2(20, 90, 16, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(132, 6, 18, 27)]
 }
 
 [sub_resource type="Animation" id="Animation_pmqej"]
@@ -287,6 +302,81 @@ tracks/0/keys = {
 "values": [Rect2(27, 572, 22, 32), Rect2(53, 572, 22, 32), Rect2(27, 572, 22, 32), Rect2(1, 572, 22, 32)]
 }
 
+[sub_resource type="Animation" id="Animation_6k7yr"]
+resource_name = "gold_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(132, 6, 16, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_nas7m"]
+resource_name = "gold_walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(150, 6, 16, 27), Rect2(167, 6, 16, 27), Rect2(150, 6, 16, 27), Rect2(133, 6, 16, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_4g25h"]
+resource_name = "gold_jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(184, 6, 16, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_2s41f"]
+resource_name = "gold_fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(184, 6, 16, 27)]
+}
+
+[sub_resource type="Animation" id="Animation_vysy0"]
+resource_name = "gold_throw"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D2:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(201, 173, 16, 27), Rect2(218, 173, 16, 27)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnnry"]
 _data = {
 &"RESET": SubResource("Animation_5ue2y"),
@@ -297,6 +387,11 @@ _data = {
 &"fire_jump": SubResource("Animation_wih1i"),
 &"fire_throw": SubResource("Animation_glbki"),
 &"fire_walk": SubResource("Animation_0ic7m"),
+&"gold_fall": SubResource("Animation_2s41f"),
+&"gold_idle": SubResource("Animation_6k7yr"),
+&"gold_jump": SubResource("Animation_4g25h"),
+&"gold_throw": SubResource("Animation_vysy0"),
+&"gold_walk": SubResource("Animation_nas7m"),
 &"idle": SubResource("Animation_wnnry"),
 &"invincible_idle": SubResource("Animation_72hvn"),
 &"jump": SubResource("Animation_6je0m"),
@@ -310,6 +405,48 @@ _data = {
 &"tanooki_walk": SubResource("Animation_xioh2")
 }
 
+[sub_resource type="FontFile" id="FontFile_0ic7m"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/1/0/ascent = 0.0
+cache/0/1/0/descent = 0.0
+cache/0/1/0/underline_position = 0.0
+cache/0/1/0/underline_thickness = 0.0
+cache/0/1/0/scale = 1.0
+cache/0/10/0/ascent = 0.0
+cache/0/10/0/descent = 0.0
+cache/0/10/0/underline_position = 0.0
+cache/0/10/0/underline_thickness = 0.0
+cache/0/10/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_wih1i"]
+default_font = SubResource("FontFile_0ic7m")
+default_font_size = 14
+
+[sub_resource type="FontFile" id="FontFile_8wnhh"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+
+[sub_resource type="Theme" id="Theme_glbki"]
+default_font = SubResource("FontFile_8wnhh")
+default_font_size = 14
+
 [node name="Mario" type="CharacterBody2D"]
 script = ExtResource("1_5ue2y")
 
@@ -322,24 +459,18 @@ offset = Vector2(0, -30)
 zoom = Vector2(3, 3)
 script = ExtResource("2_6je0m")
 
-[node name="Label" type="Label" parent="."]
-offset_left = -185.0
-offset_top = -126.0
-offset_right = 142.0
-offset_bottom = -77.0
-script = ExtResource("2_wnnry")
-
 [node name="Player" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_5ue2y")
 
-[node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("mario", "animation_player", "sprite")]
+[node name="PlayerAnimator" type="Node2D" parent="." node_paths=PackedStringArray("mario", "animation_player", "sprite", "sprite2")]
 script = ExtResource("2_5ue2y")
 mario = NodePath("..")
 animation_player = NodePath("AnimationPlayer")
 sprite = NodePath("Sprite2D")
+sprite2 = NodePath("Sprite2D2")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator"]
 position = Vector2(0, -14)
@@ -349,6 +480,12 @@ region_enabled = true
 region_rect = Rect2(20, 90, 16, 32)
 region_filter_clip_enabled = true
 
+[node name="Sprite2D2" type="Sprite2D" parent="PlayerAnimator"]
+position = Vector2(1, -13)
+texture = ExtResource("5_wih1i")
+region_enabled = true
+region_rect = Rect2(132, 6, 18, 27)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator"]
 root_node = NodePath("../..")
 libraries = {
@@ -356,6 +493,30 @@ libraries = {
 }
 autoplay = "Walk"
 speed_scale = 1.5
+
+[node name="Health Bar" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_mmods")]
+position = Vector2(165, -115)
+player = NodePath("..")
+
+[node name="Label" type="Label" parent="." node_paths=PackedStringArray("player")]
+offset_left = -120.0
+offset_top = -131.0
+offset_right = -69.0
+offset_bottom = -108.0
+theme = SubResource("Theme_wih1i")
+text = "Coins: "
+script = ExtResource("3_wih1i")
+player = NodePath("..")
+
+[node name="Label2" type="Label" parent="." node_paths=PackedStringArray("player")]
+offset_left = 37.0
+offset_top = -130.0
+offset_right = 116.0
+offset_bottom = -107.0
+theme = SubResource("Theme_glbki")
+text = "Invincible!"
+script = ExtResource("3_0ic7m")
+player = NodePath("..")
 
 [connection signal="area_entered" from="Player" to="." method="_on_player_area_entered"]
 [connection signal="body_entered" from="Player" to="." method="_on_area_2d_body_entered"]

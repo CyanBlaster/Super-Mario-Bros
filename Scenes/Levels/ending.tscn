@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcj03y78akn4h"]
+[gd_scene load_steps=9 format=3 uid="uid://dcj03y78akn4h"]
 
 [ext_resource type="Texture2D" uid="uid://c5edx6632gjpg" path="res://Sprites/Mario and Luigi.png" id="1_bfbvn"]
 [ext_resource type="Texture2D" uid="uid://ch5om0bhc8s27" path="res://Sprites/Yoshi's House.webp" id="1_rwivm"]
+[ext_resource type="Script" uid="uid://787ubk8lq56o" path="res://Scenes/Levels/ending.gd" id="1_yg1g5"]
 [ext_resource type="Texture2D" uid="uid://mm2tdu2mfhby" path="res://Sprites/Bowser's Background.png" id="2_c1jus"]
 [ext_resource type="Texture2D" uid="uid://dq5rksis2jy53" path="res://Sprites/Bosses.png" id="2_iaai7"]
 [ext_resource type="Texture2D" uid="uid://cb2t2frrx5ai7" path="res://Sprites/Princess Peach.png" id="3_rwivm"]
@@ -9,6 +10,7 @@
 [ext_resource type="Script" uid="uid://dkio2d7d0a5am" path="res://Scenes/Levels/background_music.gd" id="7_03fdi"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_yg1g5")
 
 [node name="Yoshi\'sHouse" type="Sprite2D" parent="."]
 position = Vector2(576.00006, 340.00003)
@@ -31,7 +33,7 @@ text = "Congratulations! You defeated that cheating little b-
 Right this is an E for Everyone production you defeated that little cheater 
 and now you and your bros are having a great party!
 
-Thank you so much for-a playing my game!"
+Thank you so much for-a playing my game! Now, a-press X for the credits."
 
 [node name="Luigi" type="Sprite2D" parent="."]
 position = Vector2(726.99994, 282)

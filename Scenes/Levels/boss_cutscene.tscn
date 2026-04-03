@@ -12,10 +12,12 @@ scale = Vector2(3.8533332, 3.31)
 texture = ExtResource("2_6biu2")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "\"So he's told you\", the princess said. \"No matter, I will deal with him later. For now, now that you know my secret, I will make sure you'll never speak a
-world about this!\"
-\"I will pulverize you!\" Mario said, determined to avenge the 67 vicitms of the princess, including his dear old brother. 
+offset_left = 113.0
+offset_top = 6.0
+offset_right = 1269.0
+offset_bottom = 133.0
+text = "\"So he's told you\", the princess said. \"No matter, I will deal with him later. For now, now that you know my secret, 
+I will make sure you'll never speak a word about this!\"
+\"I will-a pulverize you!\" Mario said, determined to avenge the 67 vicitms of the princess, including his dear old brother. 
 
-Press X to continue!"
+Press Z to continue!"

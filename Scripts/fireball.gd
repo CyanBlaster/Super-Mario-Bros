@@ -12,12 +12,15 @@ func _ready() -> void:
 	position.y -= 15
 	pass
 
-func _process(delta: float) -> void:
+func _process(delta: float) -> void: 
 	position.x += speed * direction * delta
 	
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if(area.name == "Goomba"):
-		print(area.name)
+	if(area.name == "GoombaPlayerDetector" || area.name == "GoombaWallDetector" || area.name == "Koopa_Wall_Detector" || area.name == "Player_Detector" || area.name.begins_with("Ice_")):
+		queue_free()
+	if(area.name == "PeachHitDetector"):
+		Peach.boss_health -= 1
+		print(Peach.boss_health)
 		queue_free()

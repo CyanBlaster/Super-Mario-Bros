@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ctwpkljqnecoa"
+path="res://.godot/imported/Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster).mp3-e911140f84222648b3368639e59a1bcb.mp3str"
+
+[deps]
+
+source_file="res://Music/Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster).mp3"
+dest_files=["res://.godot/imported/Rick Astley - Never Gonna Give You Up (Official Video) (4K Remaster).mp3-e911140f84222648b3368639e59a1bcb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

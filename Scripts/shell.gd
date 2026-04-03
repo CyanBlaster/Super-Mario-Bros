@@ -17,10 +17,14 @@ func _process(_delta):
 	move_and_slide() 
 
 
-func _on_player_detector_area_entered(_area: Area2D) -> void:
+func _on_player_detector_area_entered(area: Area2D) -> void:
 	Mario.hit = true
-	if(speed != 0 && _area.name == "Player"):
+	if(speed != 0 && area.name == "Player"):
 		speed = 0
+	elif(area.name.begins_with("fireball_")):
+		queue_free()
+	elif(area.name.begins_with("goldball_")):
+		queue_free()
 	else:
 		speed = 20000
 	

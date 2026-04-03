@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://48fjwmd13tkl"]
+
+[ext_resource type="Script" uid="uid://b0k6fksamcsqw" path="res://Scenes/Levels/ice_block.gd" id="1_04dpv"]
+[ext_resource type="Texture2D" uid="uid://dskqe0kihewiu" path="res://Sprites/Ice-Block.webp" id="2_1w7dn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_04dpv"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73h12"]
+size = Vector2(16, 16)
+
+[node name="ice" type="CharacterBody2D"]
+script = ExtResource("1_04dpv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_04dpv")
+
+[node name="Ice_" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ice_"]
+shape = SubResource("RectangleShape2D_73h12")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-6.2584877e-07, -1.4901161e-07)
+scale = Vector2(0.09999999, 0.1)
+texture = ExtResource("2_1w7dn")
+
+[connection signal="area_entered" from="Ice_" to="." method="_on_area_2d_area_entered"]

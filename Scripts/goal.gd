@@ -15,7 +15,12 @@ func _process(_delta):
 	
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Mario" && Mario.level == 1: 
+	if body.name == "Mario" && Mario.level == 0: 
+		get_tree().change_scene_to_file("res://Scenes/Levels/world_1_1.tscn")
+		queue_free()
+		Mario.level += 1
+		print("Level 1")
+	elif body.name == "Mario" && Mario.level == 1: 
 		get_tree().change_scene_to_file("res://Scenes/Levels/world_1_2.tscn")
 		queue_free()
 		Mario.level += 1

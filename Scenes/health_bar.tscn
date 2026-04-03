@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwpe54ah6pnlp"]
+
+[ext_resource type="Script" uid="uid://d22nrfr7q3wih" path="res://health_bar.gd" id="1_wjrfg"]
+[ext_resource type="Texture2D" uid="uid://5ao1rj8ws4u5" path="res://Sprites/HP 1.png" id="2_ap322"]
+[ext_resource type="Texture2D" uid="uid://s4nx1gnt22si" path="res://Sprites/HP 2.png" id="3_4vfrx"]
+[ext_resource type="Texture2D" uid="uid://veyvst313d41" path="res://Sprites/HP 3.png" id="4_p1cfu"]
+[ext_resource type="Texture2D" uid="uid://8bw0171cpga8" path="res://Sprites/HP 4.png" id="5_p1cfu"]
+[ext_resource type="Texture2D" uid="uid://p5ypw2nhwct8" path="res://Sprites/HP 5.png" id="6_rdj5c"]
+[ext_resource type="Texture2D" uid="uid://vltiog3em2s3" path="res://Sprites/HP 6.png" id="7_wxnkl"]
+
+[node name="Health Bar" type="Node2D" node_paths=PackedStringArray("six", "five", "four", "three", "two", "one")]
+script = ExtResource("1_wjrfg")
+six = NodePath("Animator/HP 6")
+five = NodePath("Animator/HP 5")
+four = NodePath("Animator/HP 4")
+three = NodePath("Animator/HP 3")
+two = NodePath("Animator/HP 2")
+one = NodePath("Animator/HP 1")
+
+[node name="Animator" type="Node2D" parent="."]
+
+[node name="HP 1" type="Sprite2D" parent="Animator"]
+position = Vector2(2.861023e-06, 9.536743e-07)
+scale = Vector2(0.22875, 0.20875001)
+texture = ExtResource("2_ap322")
+
+[node name="HP 2" type="Sprite2D" parent="Animator"]
+position = Vector2(-0.9628893, -0.050781608)
+scale = Vector2(0.22037111, 0.2094922)
+texture = ExtResource("3_4vfrx")
+
+[node name="HP 3" type="Sprite2D" parent="Animator"]
+position = Vector2(-3.516674e-06, 0.5000002)
+scale = Vector2(0.23999996, 0.21500002)
+texture = ExtResource("4_p1cfu")
+
+[node name="HP 4" type="Sprite2D" parent="Animator"]
+position = Vector2(-15, 2)
+scale = Vector2(0.23999996, 0.21500002)
+texture = ExtResource("5_p1cfu")
+
+[node name="HP 5" type="Sprite2D" parent="Animator"]
+position = Vector2(-15.000004, 2.0000002)
+scale = Vector2(0.23999996, 0.21500002)
+texture = ExtResource("6_rdj5c")
+
+[node name="HP 6" type="Sprite2D" parent="Animator"]
+position = Vector2(-15.000004, 2.000002)
+scale = Vector2(0.23999996, 0.21500002)
+texture = ExtResource("7_wxnkl")

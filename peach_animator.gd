@@ -14,7 +14,7 @@ func _process(_delta):
 	#if(statemachine.current_state == "BossPowerup"):
 		#animation_player.play("Powerup")
 	#else:
-	if(Peach.boss_health <= 5):
+	if(Peach.boss_health <= 25):
 		animation_player.play("Fire_Idle") 
 	else:
 		animation_player.play("Idle")

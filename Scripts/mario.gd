@@ -3,14 +3,14 @@ class_name PlayerController
 
 
 @onready var projectile = preload("res://Scenes/fireball.tscn")
-
+@onready var projectile2 = preload("res://Scenes/goldball.tscn")
 @export var speed = 10.0
 @export var jump_power = 10.0
-@export var flight_power = 7
+@export var flight_power = 7 
 @export var hit = false
 
 static var powerup = 1
-var level = 1
+var level = 0
 var speed_multiplier = 10
 var jump_multiplier = -30
 var sprint = 1
@@ -20,9 +20,11 @@ var cooldown = 0
 @export var oldpower = 1
 @export var invincible = 0
 @export var dead = false
+@export var health = 3
+@export var coins = 0
 var d = 1
 var balls = 0
-
+var balls2 = 0
 
 func _ready() -> void: 
 	position.y = 400
@@ -31,7 +33,8 @@ func _physics_process(delta: float) -> void:
 	if(position.y > 800):
 		position.x = -400
 		position.y = 400
-	if(dead == true): 
+		health = 3
+	if(dead == true || Input.is_action_pressed("reset")): 
 		position.y = 2600
 		dead = false
 	if(hit):
@@ -76,6 +79,9 @@ func _physics_process(delta: float) -> void:
 		if powerup == 2:
 			balls += 1 
 			shoot()
+		elif powerup == 5:
+			balls2 += 1
+			shoot()
 
 	#Tracks invinciblity.
 	if(invincible > 0):
@@ -89,15 +95,19 @@ func _physics_process(delta: float) -> void:
 	
 func shoot():
 	print("Mario shoot")
-	var instance = projectile.instantiate()
+	var instance
+	if(powerup == 2):
+		instance = projectile.instantiate()
+		instance.name = "fireball_" + str(balls)
+	else:
+		instance = projectile2.instantiate()
+		instance.name = "goldball_" + str(balls2)
 	if d == 1:
 		instance.direction = 1
 	else:
 		instance.direction = -1
-	instance.name = "fireball_" + str(balls)
 	instance.position = position
 	get_tree().current_scene.add_child(instance)
-	#add_child(instance)
 
 
 
@@ -108,23 +118,35 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	elif body.name == "leaf":
 		oldpower = powerup
 		powerup = 3
+
 	
 
 
 
 func _on_player_area_entered(area: Area2D) -> void:
-	if((area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector" or area.name == "Peach_Collision") && cooldown <= 0 && invincible <= 0):
+	if((area.name == "GoombaWallDetector" or area.name == "Koopa_Wall_Detector" or area.name == "Peach_Collision" or area.name.begins_with("enemyfire_")) && cooldown <= 0 && invincible <= 0):
 		if(powerup == 1):
 			print("Ouch", invincible)
-			dead = true
+			health -= 1
+			print(health)
+			print(Mario.health)
+			if(health <= 0):
+				dead = true
 		else:
 			powerup = 1
 			cooldown = 1
 	if(area.name == "GoombaPlayerDetector" or area.name == "PeachHitDetector"):
 		velocity.y = jump_power * jump_multiplier * jump_sprint
-		if(area.name == "PeachHitDetector"):
-			Peach.boss_health -= 1
+		if(area.name == "PeachHitDetector"): 
+			Peach.boss_health -= 5
 			print(Peach.boss_health)
-	if area.name == "star":
-		print(invincible)
+	if area.name == "star": 
+		print(invincible) 
 		invincible = 10
+	if area.name == "LifeMushroom": 
+		health = 6
+	if area.name == "Coin":
+		coins += 1
+		if(health < 3):
+			health += 1
+	

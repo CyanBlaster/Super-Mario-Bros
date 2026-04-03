@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6fwtwcgr4wb0"]
+
+[sub_resource type="GDScript" id="GDScript_xbpdd"]
+script/source = "extends Label
+@export var player : CharacterBody2D
+
+
+func _process(_delta):
+	if(player.invincible > 0):
+		show()
+	else:
+		hide()
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_xbpdd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -99.0
+offset_top = -13.0
+offset_right = 114.0
+offset_bottom = 10.0
+text = "You are now invincible!!!! :D"

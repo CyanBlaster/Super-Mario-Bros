@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chdn7xaad4jks"
+path="res://.godot/imported/KAT - Pull the Trigger ft. Yi Xi (SynthV Original Song).mp3-5c27bf60fd5379a1fafa4dab4132ddc4.mp3str"
+
+[deps]
+
+source_file="res://Music/KAT - Pull the Trigger ft. Yi Xi (SynthV Original Song).mp3"
+dest_files=["res://.godot/imported/KAT - Pull the Trigger ft. Yi Xi (SynthV Original Song).mp3-5c27bf60fd5379a1fafa4dab4132ddc4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

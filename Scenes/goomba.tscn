@@ -63,7 +63,7 @@ size = Vector2(14, 13)
 size = Vector2(18, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qp31q"]
-size = Vector2(14, 6.5)
+size = Vector2(14, 14.5)
 
 [node name="Goomba" type="CharacterBody2D"]
 script = ExtResource("1_jke6y")
@@ -98,7 +98,7 @@ shape = SubResource("RectangleShape2D_508bv")
 [node name="GoombaPlayerDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoombaPlayerDetector"]
-position = Vector2(0, -5.25)
+position = Vector2(0, -1.25)
 shape = SubResource("RectangleShape2D_qp31q")
 
 [connection signal="area_entered" from="GoombaWallDetector" to="." method="_on_goomba_wall_detector_area_entered"]
