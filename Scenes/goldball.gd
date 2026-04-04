@@ -7,17 +7,13 @@ var life = 1
 
 func _ready() -> void:
 	#position.y = Mario.position.y
-	#direction = Mario.d
+	#direction = Mario.d 
 	name = "goldball_" + str(Mario.balls)
 	position.y -= 15
 	pass
 
 func _process(delta: float) -> void: 
-	position.x += speed * direction * delta
-	
-
-
-	
+	position.x += speed * direction * delta 
 
 
 func _on_area_entered(area: Area2D) -> void:

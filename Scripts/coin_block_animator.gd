@@ -9,14 +9,14 @@ var hit = false
 var rng = RandomNumberGenerator.new()
 
 func _process(_delta):
-	if(hit):
+	if(hit): 
 		animation_player.play("hit")
 	else:
 		animation_player.play("idle") 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if(body.name == "Mario"):
+	if(body.name == "Mario" && !hit):
 		var instance = coin.instantiate()
 		instance.position.x = position.x 
 		instance.position.y = position.y - 16

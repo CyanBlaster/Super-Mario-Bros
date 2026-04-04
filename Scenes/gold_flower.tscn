@@ -7,7 +7,7 @@
 size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbtng"]
-size = Vector2(18, 18)
+size = Vector2(18, 17)
 
 [node name="goldflower" type="CharacterBody2D"]
 script = ExtResource("1_ign5l")
@@ -23,6 +23,7 @@ region_rect = Rect2(167, 218, 16, 16)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_gbtng")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -18,7 +18,7 @@ scale = Vector2(4.484375, 3.1160715)
 texture = ExtResource("1_rwivm")
 
 [node name="SnesSuperMarioAllStarsSuperMarioBros_&TheLostLevelsBackgroundsCastle1" type="Sprite2D" parent="."]
-position = Vector2(583, 109.5)
+position = Vector2(605, 107)
 scale = Vector2(6.18, 1.7875)
 texture = ExtResource("2_c1jus")
 region_enabled = true
@@ -30,20 +30,20 @@ offset_top = 46.0
 offset_right = 872.0
 offset_bottom = 191.0
 text = "Congratulations! You defeated that cheating little b-
-Right this is an E for Everyone production you defeated that little cheater 
-and now you and your bros are having a great party!
-
-Thank you so much for-a playing my game! Now, a-press X for the credits."
+Right this is an E for Everyone production you defeated that little cheater, 
+and now you and your bros are having a great party! Beating the daylights
+out of her for some reason though as a form of celebration is kinda weird tho.
+Thank you so much for-a playing my game! Now, a-press Z for the credits."
 
 [node name="Luigi" type="Sprite2D" parent="."]
-position = Vector2(726.99994, 282)
+position = Vector2(726.99994, 450)
 scale = Vector2(5.094245, 5.1981306)
 texture = ExtResource("1_bfbvn")
 region_enabled = true
 region_rect = Rect2(73, 178, 16, 27)
 
 [node name="Mario" type="Sprite2D" parent="."]
-position = Vector2(388, 276)
+position = Vector2(422, 444)
 scale = Vector2(5.0625, 4.851851)
 texture = ExtResource("1_bfbvn")
 flip_h = true
